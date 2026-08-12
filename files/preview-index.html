@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="estudio">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ligia Ribeiro · Product Designer &amp; Dev</title>
+<meta name="description" content="Product designer que programa: design systems adotados por múltiplas squads, UX research e automações. 12+ anos em design, 5+ em produtos digitais.">
+<link rel="canonical" href="https://liribeiro.com.br/">
+<meta property="og:title" content="Ligia Ribeiro · Product Designer & Dev">
+<meta property="og:description" content="Desenho o produto e escrevo o código. Design systems, UX e automação.">
+<meta property="og:url" content="https://liribeiro.com.br/">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,100..900,0..100,0..1;1,9..144,100..900,0..100,0..1&family=Hanken+Grotesk:ital,wght@0,300..800;1,300..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   SISTEMA DE TOKENS · um sistema, duas peles · v2
+   tema "estúdio" → produto & dev (tinta quente, laranja, grade)
+   tema "ateliê"  → ilustração (papel, aquarela, mesma família)
+   Tipografia única e aconchegante nos dois temas:
+   Fraunces (display, soft alto) + Hanken Grotesk (texto)
+   ============================================================ */
+:root{
+  --laranja:#ff7a59;
+  --laranja-fundo:rgba(255,122,89,.13);
+  --violeta:#8e2de2;
+  --primary:var(--laranja);
+  --primary-bg:var(--laranja-fundo);
+  --mono:'JetBrains Mono',monospace;
+  --sans:'Hanken Grotesk',sans-serif;
+  --display:'Fraunces',serif;
+  --t-tema:.65s cubic-bezier(.4,0,.2,1);
+  --raio:20px;
+}
+[data-theme="estudio"]{
+  --fundo:#141319;
+  --fundo-2:#1c1a23;
+  --superficie:#1f1d27;
+  --linha:rgba(240,238,246,.12);
+  --texto:#f0eef6;
+  --texto-2:#a29eb3;
+  --wash:radial-gradient(1100px 620px at 88% -8%, rgba(142,45,226,.13), transparent 60%),
+         radial-gradient(900px 540px at -8% 108%, rgba(255,122,89,.09), transparent 55%);
+  --grade:linear-gradient(rgba(240,238,246,.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(240,238,246,.04) 1px, transparent 1px);
+  --grao:.035;
+}
+
+/* ---------- acento por área: dev puxa para o violeta ---------- */
+[data-primary="violeta"]{
+  --primary:#b07ef5;
+  --primary-bg:rgba(142,45,226,.18);
+}
+[data-primary="violeta"][data-theme="estudio"]{
+  --wash:radial-gradient(1100px 620px at 88% -8%, rgba(142,45,226,.22), transparent 60%),
+         radial-gradient(900px 540px at -8% 108%, rgba(255,122,89,.05), transparent 55%);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);
+  font-weight:400;
+  background:var(--fundo);
+  color:var(--texto);
+  line-height:1.65;
+  transition:background-color var(--t-tema), color var(--t-tema);
+  min-height:100vh;
+}
+/* aquarela de fundo + grade sutil */
+body::before{
+  content:'';position:fixed;inset:0;z-index:-3;
+  background:var(--wash);
+}
+body::after{
+  content:'';position:fixed;inset:0;z-index:-2;
+  background:var(--grade);
+  background-size:56px 56px;
+  mask-image:linear-gradient(to bottom, rgba(0,0,0,.9), transparent 70%);
+  pointer-events:none;
+}
+/* grão de papel nos dois temas */
+.grao{
+  position:fixed;inset:0;z-index:-1;pointer-events:none;
+  opacity:var(--grao);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  transition:opacity var(--t-tema);
+}
+a{color:inherit}
+::selection{background:var(--primary);color:#141319}
+
+.wrap{width:min(1120px,92%);margin-inline:auto}
+
+/* ---------- display ---------- */
+.disp{
+  font-family:var(--display);
+  font-variation-settings:'SOFT' 25,'WONK' 0;
+  font-weight:530;
+  letter-spacing:-.022em;
+  line-height:1.05;
+}
+.disp em{font-style:normal;font-weight:720;color:var(--primary)}
+
+/* ---------- margarida (assinatura) ---------- */
+.margarida{display:inline-block;width:.62em;height:.62em;vertical-align:baseline;margin-left:.08em}
+.margarida path{fill:var(--laranja)}
+.margarida circle{fill:var(--texto);transition:fill var(--t-tema)}
+
+/* ---------- nav ---------- */
+nav{
+  position:sticky;top:0;z-index:50;
+  backdrop-filter:blur(14px);
+  background:color-mix(in srgb, var(--fundo) 80%, transparent);
+  border-bottom:1px solid var(--linha);
+  transition:background-color var(--t-tema), border-color var(--t-tema);
+}
+.nav-in{display:flex;align-items:center;justify-content:space-between;padding:.95rem 0}
+.marca{
+  font-family:var(--display);
+  font-variation-settings:'SOFT' 25,'WONK' 0;
+  font-weight:600;letter-spacing:-.015em;font-size:1.12rem;text-decoration:none;
+}
+.nav-links{display:flex;gap:1.6rem;list-style:none;font-size:.88rem;font-weight:500}
+.nav-links a{text-decoration:none;color:var(--texto-2);transition:color .2s}
+.nav-links a:hover,.nav-links a:focus-visible{color:var(--texto)}
+.nav-cta{
+  font-family:var(--mono);font-size:.78rem;
+  border:1px solid var(--primary);color:var(--primary);
+  padding:.48rem .95rem;border-radius:999px;text-decoration:none;
+  transition:background .2s,color .2s;
+}
+.nav-cta:hover,.nav-cta:focus-visible{background:var(--primary);color:#141319}
+
+/* ---------- hero ---------- */
+header{padding:clamp(4rem,9vh,7rem) 0 3rem}
+.eyebrow{
+  font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;
+  color:var(--primary);display:flex;align-items:center;gap:.6rem;margin-bottom:1.5rem;
+}
+.eyebrow::before{content:'';width:26px;height:1px;background:var(--primary)}
+h1{font-size:clamp(2.5rem,6vw,4.5rem);max-width:16ch}
+.hero-sub{
+  margin-top:1.6rem;max-width:54ch;color:var(--texto-2);
+  font-size:1.08rem;font-weight:400;
+}
+.hero-meta{
+  margin-top:1.7rem;font-family:var(--mono);font-size:.78rem;color:var(--texto-2);
+  display:flex;gap:1.4rem;flex-wrap:wrap;
+}
+.hero-meta b{color:var(--texto);font-weight:500}
+
+/* ---------- portas ---------- */
+.portas{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:1.05rem;
+  padding:1.6rem 0 4rem;
+}
+.porta{
+  position:relative;display:flex;flex-direction:column;gap:1rem;
+  background:var(--superficie);
+  border:1px solid var(--linha);
+  border-radius:var(--raio);
+  padding:1.8rem 1.6rem 1.55rem;
+  text-decoration:none;
+  transition:transform .25s ease, border-color .25s, background-color var(--t-tema);
+  min-height:300px;
+}
+.porta:hover,.porta:focus-visible{transform:translateY(-5px);border-color:var(--primary)}
+.porta-tag{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;color:var(--texto-2)}
+.porta h2{font-size:1.62rem}
+.porta p{font-size:.94rem;color:var(--texto-2);flex-grow:1}
+.porta-prova{
+  font-size:.84rem;border-left:2px solid var(--primary);
+  padding-left:.85rem;color:var(--texto-2);
+}
+.porta-prova b{color:var(--texto);font-weight:600}
+.porta-cta{
+  font-family:var(--mono);font-size:.78rem;color:var(--primary);
+  display:flex;align-items:center;gap:.4rem;
+}
+.porta-cta::after{content:'→';transition:transform .2s}
+.porta:hover .porta-cta::after{transform:translateX(4px)}
+
+/* ---------- faixa de prova ---------- */
+.provas{
+  border-block:1px solid var(--linha);
+  padding:2.3rem 0;
+  transition:border-color var(--t-tema);
+}
+.provas-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem}
+.prova .n{font-size:1.75rem}
+.prova .l{font-size:.84rem;color:var(--texto-2);margin-top:.25rem}
+
+/* ---------- o site como case ---------- */
+.meta-case{padding:4.6rem 0}
+.meta-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:3rem;align-items:center}
+.meta-case h3{font-size:clamp(1.65rem,3.4vw,2.35rem);max-width:19ch}
+.meta-case p{color:var(--texto-2);margin-top:1.05rem;max-width:48ch}
+.tema-demo{
+  background:var(--superficie);border:1px solid var(--linha);border-radius:var(--raio);
+  padding:1.45rem;transition:background-color var(--t-tema),border-color var(--t-tema);
+}
+.tema-demo .lbl{font-family:var(--mono);font-size:.72rem;color:var(--texto-2);margin-bottom:1rem;display:block}
+.chips{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.25rem}
+.chip{
+  font-family:var(--mono);font-size:.72rem;padding:.36rem .72rem;border-radius:9px;
+  border:1px solid var(--linha);display:flex;align-items:center;gap:.45rem;
+}
+.chip i{width:11px;height:11px;border-radius:3px;display:inline-block}
+.botoes-tema{display:flex;gap:.6rem}
+.botao-tema{
+  flex:1;font-family:var(--mono);font-size:.78rem;cursor:pointer;
+  padding:.68rem;border-radius:12px;border:1px solid var(--linha);
+  background:transparent;color:var(--texto);transition:border-color .2s,background .2s;
+}
+.botao-tema[aria-pressed="true"]{border-color:var(--primary);background:var(--primary-bg)}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--linha);padding:3rem 0 2.3rem;transition:border-color var(--t-tema)}
+.foot-grid{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap}
+.foot-grid h4{font-size:1.55rem}
+.foot-links{list-style:none;display:flex;gap:1.4rem;font-family:var(--mono);font-size:.78rem}
+.foot-links a{color:var(--texto-2);text-decoration:none}
+.foot-links a:hover{color:var(--primary)}
+.assina{font-family:var(--mono);font-size:.72rem;color:var(--texto-2);margin-top:2rem}
+.assina b{color:var(--texto);font-weight:500}
+
+/* ---------- responsivo & acessibilidade ---------- */
+:focus-visible{outline:2px solid var(--primary);outline-offset:3px;border-radius:4px}
+@media (max-width:880px){
+  .portas{grid-template-columns:1fr}
+  .provas-grid{grid-template-columns:repeat(2,1fr);gap:1.4rem}
+  .meta-grid{grid-template-columns:1fr;gap:1.8rem}
+  .nav-links{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition:none!important;animation:none!important}
+  html{scroll-behavior:auto}
+}
+
+/* ============================================================
+   COMPONENTES DAS PÁGINAS INTERNAS
+   ============================================================ */
+
+/* ---------- hero de página interna ---------- */
+.pagina-hero{padding:clamp(3.5rem,7vh,5.5rem) 0 2.5rem}
+.pagina-hero h1{font-size:clamp(2.1rem,5vw,3.4rem);max-width:22ch}
+.pagina-hero .hero-sub{font-size:1.02rem}
+
+/* ---------- categorias de obras ---------- */
+.categoria{padding:3rem 0 1rem}
+.categoria-head{display:flex;align-items:baseline;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.6rem}
+.categoria-head h2{font-size:clamp(1.5rem,3vw,2rem)}
+.categoria-head p{color:var(--texto-2);font-size:.92rem;max-width:46ch}
+
+.obras-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.05rem}
+.obra{
+  display:flex;flex-direction:column;
+  background:var(--superficie);border:1px solid var(--linha);
+  border-radius:var(--raio);overflow:hidden;
+  transition:transform .25s ease,border-color .25s;
+}
+.obra:hover{transform:translateY(-4px);border-color:var(--primary)}
+.obra-img{aspect-ratio:4/3;width:100%;object-fit:cover;display:block;background:var(--fundo-2)}
+.obra-info{padding:1rem 1.1rem 1.05rem}
+.obra-info h3{font-family:var(--sans);font-weight:600;font-size:.98rem}
+.obra-info p{color:var(--texto-2);font-size:.84rem;margin-top:.15rem}
+.obra-tags{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.7rem}
+.tag{
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.03em;
+  border:1px solid var(--linha);border-radius:7px;padding:.22rem .55rem;color:var(--texto-2);
+}
+
+/* espaço reservado para obra ainda não publicada */
+.obra--vazia{
+  border-style:dashed;justify-content:center;align-items:center;
+  min-height:280px;gap:.6rem;text-align:center;padding:1.5rem;
+  color:var(--texto-2);
+}
+.obra--vazia:hover{transform:none;border-color:var(--linha)}
+.obra--vazia .lbl-vazia{font-family:var(--mono);font-size:.74rem;letter-spacing:.05em}
+.obra--vazia p{font-size:.82rem;max-width:24ch}
+
+/* ---------- faixa de clientes ---------- */
+.clientes{border-block:1px solid var(--linha);padding:1.9rem 0}
+.clientes .lbl{font-family:var(--mono);font-size:.72rem;color:var(--texto-2);letter-spacing:.06em;margin-bottom:.9rem;display:block}
+.clientes-lista{display:flex;gap:1.2rem 2.2rem;flex-wrap:wrap;list-style:none}
+.clientes-lista li{font-family:var(--display);font-variation-settings:'SOFT' 25,'WONK' 0;font-weight:560;font-size:1.06rem}
+
+/* ---------- sobre (com foto) ---------- */
+.sobre{padding:4rem 0}
+.sobre-grid{display:grid;grid-template-columns:.42fr .58fr;gap:2.6rem;align-items:center}
+.sobre-foto{
+  aspect-ratio:4/5;border-radius:var(--raio);object-fit:cover;width:100%;
+  border:1px solid var(--linha);background:var(--fundo-2);
+}
+.sobre-foto--vazia{
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  border-style:dashed;color:var(--texto-2);font-family:var(--mono);font-size:.74rem;padding:1rem;
+}
+.sobre h2{font-size:clamp(1.6rem,3.2vw,2.2rem);max-width:18ch}
+.sobre p{color:var(--texto-2);margin-top:1rem;max-width:52ch}
+
+/* ---------- bloco para diretores de arte / contratação ---------- */
+.bloco-ad{
+  background:var(--superficie);border:1px solid var(--linha);border-radius:var(--raio);
+  padding:2.2rem;margin:1rem 0 4rem;
+  display:grid;grid-template-columns:1.1fr .9fr;gap:2.2rem;align-items:center;
+}
+.bloco-ad h2{font-size:clamp(1.45rem,3vw,1.9rem);max-width:20ch}
+.bloco-ad p{color:var(--texto-2);margin-top:.8rem;max-width:48ch;font-size:.94rem}
+.bloco-ad-acoes{display:flex;flex-direction:column;gap:.7rem}
+.botao{
+  font-family:var(--mono);font-size:.82rem;text-align:center;text-decoration:none;
+  padding:.85rem 1.2rem;border-radius:12px;border:1px solid var(--primary);
+  transition:background .2s,color .2s;
+}
+.botao--cheio{background:var(--primary);color:#141319;font-weight:500}
+.botao--cheio:hover{background:transparent;color:var(--primary)}
+.botao--vazado{color:var(--primary)}
+.botao--vazado:hover{background:var(--primary-bg)}
+
+/* ---------- lista de cases (produto e dev) ---------- */
+.cases{display:flex;flex-direction:column;gap:1.05rem;padding:1rem 0 4rem}
+.case-card{
+  display:grid;grid-template-columns:.9fr 1.1fr;gap:0;
+  background:var(--superficie);border:1px solid var(--linha);border-radius:var(--raio);
+  overflow:hidden;text-decoration:none;
+  transition:transform .25s ease,border-color .25s;
+}
+.case-card:hover{transform:translateY(-4px);border-color:var(--primary)}
+.case-img{width:100%;height:100%;min-height:230px;object-fit:cover;display:block;background:var(--fundo-2)}
+.case-img--vazia{
+  display:flex;align-items:center;justify-content:center;
+  border-right:1px dashed var(--linha);color:var(--texto-2);
+  font-family:var(--mono);font-size:.74rem;text-align:center;padding:1rem;
+}
+.case-info{padding:1.7rem 1.8rem;display:flex;flex-direction:column;gap:.7rem}
+.case-info h2{font-size:1.45rem}
+.case-info .contexto{font-family:var(--mono);font-size:.72rem;color:var(--texto-2);letter-spacing:.05em}
+.case-info p{color:var(--texto-2);font-size:.93rem;flex-grow:1}
+.case-resultado{font-size:.86rem;border-left:2px solid var(--primary);padding-left:.85rem;color:var(--texto-2)}
+.case-resultado b{color:var(--texto);font-weight:600}
+
+/* ---------- responsivo interno ---------- */
+@media (max-width:880px){
+  .obras-grid{grid-template-columns:1fr 1fr}
+  .sobre-grid{grid-template-columns:1fr;gap:1.6rem}
+  .bloco-ad{grid-template-columns:1fr;gap:1.4rem}
+  .case-card{grid-template-columns:1fr}
+  .case-img--vazia{border-right:none;border-bottom:1px dashed var(--linha);min-height:160px}
+}
+@media (max-width:560px){
+  .obras-grid{grid-template-columns:1fr}
+}
+
+.botao--cheio{color:#141319}
+
+/* ============================================================
+   PÁGINA DE CASE (detalhe) · estrutura: overview, vídeo,
+   contexto, desafio, processo, solução, resultados, ferramentas
+   ============================================================ */
+.case-hero{padding:clamp(3rem,6vh,4.5rem) 0 1.5rem}
+.case-hero .contexto{font-family:var(--mono);font-size:.74rem;color:var(--texto-2);letter-spacing:.05em;display:block;margin-bottom:.9rem}
+.case-hero h1{font-size:clamp(2rem,4.6vw,3.1rem);max-width:24ch}
+.case-secao{padding:2.2rem 0 .4rem}
+.case-secao h2{font-size:clamp(1.35rem,2.8vw,1.8rem);margin-bottom:.9rem}
+.case-secao > p{color:var(--texto-2);max-width:68ch;margin-bottom:.9rem}
+.case-secao h3{font-family:var(--sans);font-weight:700;font-size:1rem;margin:1.4rem 0 .35rem}
+.case-secao h3 + p{color:var(--texto-2);max-width:66ch}
+
+.video-wrap{
+  position:relative;aspect-ratio:16/9;border-radius:var(--raio);overflow:hidden;
+  border:1px solid var(--linha);background:var(--fundo-2);margin:1.4rem 0;
+}
+.video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video-wrap--vazio{
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  border-style:dashed;color:var(--texto-2);font-family:var(--mono);font-size:.76rem;padding:1rem;
+}
+
+.box-desafio{
+  background:var(--superficie);border:1px solid var(--linha);border-radius:var(--raio);
+  padding:1.5rem 1.7rem;margin:1.4rem 0;
+}
+.box-desafio .lbl{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;color:var(--texto-2);display:block;margin-bottom:.7rem}
+.box-desafio ul{list-style:none;display:flex;flex-direction:column;gap:.45rem}
+.box-desafio li{font-size:.92rem;color:var(--texto-2);padding-left:1rem;position:relative}
+.box-desafio li::before{content:'';position:absolute;left:0;top:.55em;width:5px;height:5px;border-radius:50%;background:var(--primary)}
+
+.metricas{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.4rem 0}
+.metrica{
+  background:var(--primary-bg);border:1px solid var(--linha);border-radius:var(--raio);
+  padding:1.15rem 1.25rem;
+}
+.metrica .n{font-family:var(--display);font-variation-settings:'SOFT' 25,'WONK' 0;font-weight:640;font-size:1.6rem;color:var(--primary)}
+.metrica .l{font-size:.84rem;color:var(--texto-2);margin-top:.1rem}
+
+.resultados{list-style:none;display:flex;flex-direction:column;gap:.5rem;margin:1rem 0 0}
+.resultados li{font-size:.94rem;padding-left:1.45rem;position:relative}
+.resultados li::before{content:'✓';position:absolute;left:0;color:var(--primary);font-weight:700}
+
+.ferramentas{display:flex;gap:.45rem;flex-wrap:wrap;margin:2.4rem 0 4rem}
+
+.case-voltar{
+  font-family:var(--mono);font-size:.78rem;color:var(--texto-2);text-decoration:none;
+  display:inline-flex;align-items:center;gap:.4rem;margin-bottom:1rem;
+}
+.case-voltar:hover{color:var(--primary)}
+
+@media (max-width:720px){.metricas{grid-template-columns:1fr}}
+
+/* ============================================================
+   SEÇÃO "O SITE COMO CASE" · leitura em Z
+   A: título (topo-esq) → B: controles (topo-dir)
+   C: explicação (base-esq) → D: leitura de tokens (base-dir)
+   ============================================================ */
+.meta-z{display:grid;grid-template-columns:1.05fr .95fr;gap:1.8rem 3rem;align-items:start}
+.meta-z-b{display:flex;flex-direction:column;gap:.6rem;justify-self:end;width:100%;max-width:360px}
+.meta-z-b .lbl,.tokens-painel .lbl{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;color:var(--texto-2);display:block;margin-bottom:.15rem}
+.meta-z-b .botoes-tema{flex-direction:column;gap:.5rem}
+.meta-z-d{justify-self:end;width:100%;max-width:360px}
+
+/* leitura de tokens: especificação, não controle — sem pílula, sem hover, sem cursor */
+.tokens-painel{
+  background:var(--superficie);border:1px solid var(--linha);border-radius:var(--raio);
+  padding:1.2rem 1.3rem;transition:background-color var(--t-tema),border-color var(--t-tema);
+}
+.tokens-spec{list-style:none;font-family:var(--mono);font-size:.74rem;cursor:default}
+.token-linha{
+  display:grid;grid-template-columns:14px auto 1fr;gap:.7rem;align-items:center;
+  padding:.5rem 0;border-bottom:1px dashed var(--linha);color:var(--texto-2);
+}
+.token-linha:last-child{border-bottom:none;padding-bottom:.1rem}
+.token-linha .sw{width:14px;height:14px;border-radius:4px;border:1px solid var(--linha)}
+.token-linha b{color:var(--texto);font-weight:500}
+.token-linha .val{text-align:right}
+
+@media (max-width:880px){
+  .meta-z{grid-template-columns:1fr;gap:1.3rem}
+  .meta-z-b,.meta-z-d{justify-self:stretch;max-width:none}
+}
+
+</style>
+
+</head>
+<body>
+<div class="grao" aria-hidden="true"></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="flor-margarida">
+      <path d="M50 8 C58 20 58 32 50 42 C42 32 42 20 50 8 Z"/>
+      <path d="M50 92 C58 80 58 68 50 58 C42 68 42 80 50 92 Z"/>
+      <path d="M8 50 C20 42 32 42 42 50 C32 58 20 58 8 50 Z"/>
+      <path d="M92 50 C80 42 68 42 58 50 C68 58 80 58 92 50 Z"/>
+      <path d="M20 20 C34 24 42 32 46 46 C32 42 24 34 20 20 Z"/>
+      <path d="M80 20 C66 24 58 32 54 46 C68 42 76 34 80 20 Z"/>
+      <path d="M20 80 C34 76 42 68 46 54 C32 58 24 66 20 80 Z"/>
+      <path d="M80 80 C66 76 58 68 54 54 C68 58 76 66 80 80 Z"/>
+      <circle cx="50" cy="50" r="11"/>
+    </g>
+  </defs>
+</svg>
+
+<nav>
+  <div class="wrap nav-in">
+    <a class="marca" href="#">ligia ribeiro<svg class="margarida" viewBox="0 0 100 100" aria-hidden="true"><use href="#flor-margarida"/></svg></a>
+    <ul class="nav-links">
+      <li><a href="produto.html">Produto &amp; UX</a></li>
+      <li><a href="dev.html">Dev &amp; Automação</a></li>
+      <li><a href="#sistema">Sobre o site</a></li>
+    </ul>
+    <a class="nav-cta" href="mailto:ligiaribeiro.job@gmail.com">contato →</a>
+  </div>
+</nav>
+
+<header class="wrap">
+  <p class="eyebrow">product designer · dev</p>
+  <h1 class="disp">Desenho o produto e escrevo o <em>código</em>.</h1>
+  <p class="hero-sub">Sou a Ligia. Há 12 anos trabalho com design, os últimos 5 dedicados a produtos digitais: design systems adotados por múltiplas squads e automações que devolvem horas ao time. Um perfil só, dos tokens ao deploy.</p>
+  <div class="hero-meta">
+    <span><b>12+</b> anos em design</span>
+    <span><b>5+</b> anos em produto</span>
+    <span>São José dos Campos · SP</span>
+  </div>
+</header>
+
+<section class="wrap portas" aria-label="Escolha por onde começar">
+
+  <a class="porta" href="produto.html" data-tema="estudio">
+    <span class="porta-tag">para times de produto</span>
+    <h2 class="disp">Produto &amp; UX</h2>
+    <p>Design system com adoção transversal, pesquisa com usuários e prototipação de alta fidelidade em ciclos ágeis.</p>
+    <span class="porta-prova"><b>Design System Compsis:</b> componentização e documentação adotadas por múltiplos produtos.</span>
+    <span class="porta-cta">ver cases</span>
+  </a>
+
+  <a class="porta" href="dev.html" data-tema="dev" style="--primary:#b07ef5;--primary-bg:rgba(142,45,226,.18)">
+    <span class="porta-tag">para times de engenharia</span>
+    <h2 class="disp">Dev &amp; Automação</h2>
+    <p>Dashboards, robôs em Python e integrações que eliminam trabalho manual e geram relatórios sozinhos.</p>
+    <span class="porta-prova"><b>Automação CreativosBR:</b> cards criados automaticamente, dados da operação em um painel só.</span>
+    <span class="porta-cta">ver projetos</span>
+  </a>
+
+
+</section>
+
+<section class="provas">
+  <div class="wrap provas-grid">
+    <div class="prova"><div class="n disp">3</div><div class="l">design systems criados, incluindo um adotado por múltiplas squads</div></div>
+    <div class="prova"><div class="n disp">horas/semana</div><div class="l">devolvidas ao time com automação (métrica em levantamento)</div></div>
+    <div class="prova"><div class="n disp">🏆 Fatec</div><div class="l">melhor projeto de tecnologia do ano (Azimuth)</div></div>
+    <div class="prova"><div class="n disp">15+</div><div class="l">projetos concluídos entre produto, design e código</div></div>
+  </div>
+</section>
+
+<section class="wrap meta-case" id="sistema">
+  <div class="meta-z">
+
+    <div class="meta-z-a">
+      <p class="eyebrow">o site como case</p>
+      <h3 class="disp">Este site é um design system com duas peles. <em>Alterne e veja.</em></h3>
+    </div>
+
+    <div class="meta-z-b">
+      <span class="lbl">alternar pele</span>
+      <div class="botoes-tema" role="group" aria-label="Alternar pele do design system">
+        <button class="botao-tema" data-set="estudio" aria-pressed="true">produto &amp; ux · primary laranja</button>
+        <button class="botao-tema" data-set="dev" aria-pressed="false">dev &amp; automação · primary violeta</button>
+      </div>
+    </div>
+
+    <div class="meta-z-c">
+      <p>Um único conjunto de componentes, duas peles sobre a mesma tinta escura: primary <b>laranja</b> para o trabalho de produto e design, primary <b>violeta</b> para desenvolvimento e automação. Os tokens ao lado são lidos ao vivo do CSS computado: alterne a pele e veja os valores mudarem. É a disciplina que apliquei no design system da Compsis, agora aplicada a mim.</p>
+    </div>
+
+    <div class="meta-z-d">
+      <div class="tokens-painel">
+        <span class="lbl">tokens ativos</span>
+        <ul class="tokens-spec" aria-live="polite">
+          <li class="token-linha"><i class="sw" style="background:var(--fundo)"></i><b>--fundo</b><span class="val" data-token="fundo"></span></li>
+          <li class="token-linha"><i class="sw" style="background:var(--superficie)"></i><b>--superficie</b><span class="val" data-token="superficie"></span></li>
+          <li class="token-linha"><i class="sw" style="background:var(--texto)"></i><b>--texto</b><span class="val" data-token="texto"></span></li>
+          <li class="token-linha"><i class="sw" style="background:var(--primary)"></i><b>--primary</b><span class="val" data-token="primary"></span></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <h4 class="disp">Vamos trabalhar <em>juntas(os)</em>?</h4>
+      <ul class="foot-links">
+        <li><a href="mailto:ligiaribeiro.job@gmail.com">e-mail</a></li>
+        <li><a href="https://www.linkedin.com/in/liribeiro" target="_blank" rel="noopener">linkedin</a></li>
+        <li><a href="https://www.behance.net/Liribeiro" target="_blank" rel="noopener">behance</a></li>
+        <li><a href="https://github.com/ligribeiro" target="_blank" rel="noopener">github</a></li>
+        <li><a href="https://instagram.com/margaridanegra.art" target="_blank" rel="noopener">ilustração ↗</a></li>
+      </ul>
+    </div>
+    <p class="assina">desenhado e programado por <b>Ligia Ribeiro</b> · aberta a propostas como product designer e dev</p>
+  </div>
+</footer>
+
+<script>
+/* Peles do design system: estúdio (produto, primary laranja) e estúdio+violeta (dev).
+   Troca via hover/foco nas portas e via botões da seção do design system.
+   A leitura de tokens exibe o valor computado de cada custom property. */
+(function(){
+  const raiz=document.documentElement;
+  const MODOS={
+    estudio:{theme:'estudio',primary:null},
+    dev:{theme:'estudio',primary:'violeta'}
+  };
+  const portas=document.querySelectorAll('.porta[data-tema]');
+  const botoes=document.querySelectorAll('.botao-tema');
+  const tokens=document.querySelectorAll('[data-token]');
+  const mq=window.matchMedia('(hover:hover)');
+  let modoFixo='estudio';
+
+  function lerTokens(){
+    const cs=getComputedStyle(raiz);
+    tokens.forEach(el=>{
+      el.textContent=cs.getPropertyValue('--'+el.dataset.token).trim();
+    });
+  }
+
+  function aplicar(m){
+    const cfg=MODOS[m]||MODOS.estudio;
+    raiz.setAttribute('data-theme',cfg.theme);
+    if(cfg.primary){raiz.setAttribute('data-primary',cfg.primary)}
+    else{raiz.removeAttribute('data-primary')}
+    botoes.forEach(b=>b.setAttribute('aria-pressed', b.dataset.set===m ? 'true':'false'));
+    lerTokens();
+  }
+
+  portas.forEach(p=>{
+    if(mq.matches){
+      p.addEventListener('mouseenter',()=>aplicar(p.dataset.tema));
+      p.addEventListener('mouseleave',()=>aplicar(modoFixo));
+    }
+    p.addEventListener('focus',()=>aplicar(p.dataset.tema));
+    p.addEventListener('blur',()=>aplicar(modoFixo));
+  });
+
+  botoes.forEach(b=>b.addEventListener('click',()=>{
+    modoFixo=b.dataset.set;
+    aplicar(modoFixo);
+  }));
+
+  lerTokens();
+})();
+
+</script>
+</body>
+</html>
