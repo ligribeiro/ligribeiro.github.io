@@ -1,3 +1,15 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="estudio">
+<head>
+<title>Produto & UX — Ligia Ribeiro, Product Designer</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Cases de produto e UX: design system, SICAT Pay e ATM, com processo e métricas.">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,100..900,0..100,0..1;1,9..144,100..900,0..100,0..1&family=Hanken+Grotesk:ital,wght@0,300..800;1,300..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
 /* ============================================================
    SISTEMA DE TOKENS · um sistema, duas peles · v2
    tema "estúdio" → produto & dev (tinta quente, laranja, grade)
@@ -424,3 +436,199 @@ footer{border-top:1px solid var(--linha);padding:3rem 0 2.3rem;transition:border
   .meta-z{grid-template-columns:1fr;gap:1.3rem}
   .meta-z-b,.meta-z-d{justify-self:stretch;max-width:none}
 }
+
+/* ---------- download de CV com seletor de idioma ---------- */
+.cv-pop{
+  position:absolute;top:calc(100% + 6px);left:0;z-index:20;min-width:200px;
+  background:var(--superficie);border:1px solid var(--linha);border-radius:12px;
+  padding:.4rem;display:flex;flex-direction:column;gap:.2rem;
+  box-shadow:0 12px 30px rgba(0,0,0,.35);
+}
+.cv-pop a{
+  font-family:var(--mono);font-size:.82rem;text-decoration:none;color:var(--texto);
+  padding:.6rem .8rem;border-radius:8px;transition:background .18s;
+}
+.cv-pop a:hover{background:var(--primary-bg);color:var(--primary)}
+.cv-pop{min-width:260px}
+.cv-pop-lbl{font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;color:var(--texto-2);padding:.5rem .8rem .2rem;display:block}
+
+/* ============================================================
+   REVISÃO UX (heurísticas de Nielsen)
+   ============================================================ */
+
+/* H1 Visibilidade do estado: link da página atual marcado na nav */
+.nav-links a[aria-current="page"]{color:var(--texto)}
+.nav-links a[aria-current="page"]::after{content:'';display:block;height:2px;background:var(--primary);border-radius:2px;margin-top:2px}
+
+/* H1/H7 Skip link (acessibilidade + atalho) */
+.skip-link{position:absolute;left:-999px;top:0;z-index:100;background:var(--primary);color:#141319;padding:.6rem 1rem;border-radius:0 0 10px 0;font-family:var(--mono);font-size:.8rem}
+.skip-link:focus{left:0}
+
+/* seletor de idioma no topo (bandeira + ícone de tradução) */
+.lang-switch{display:flex;align-items:center;gap:.5rem}
+.lang-switch .globe{width:15px;height:15px;opacity:.7}
+.lang-switch a{
+  font-family:var(--mono);font-size:.78rem;color:var(--texto-2);text-decoration:none;
+  display:flex;align-items:center;gap:.3rem;padding:.3rem .5rem;border-radius:8px;
+  border:1px solid transparent;transition:border-color .2s,color .2s;
+}
+.lang-switch a:hover,.lang-switch a:focus-visible{color:var(--texto);border-color:var(--linha)}
+.lang-switch .flag{font-size:.95rem;line-height:1}
+.nav-in{gap:1rem}
+.nav-right{display:flex;align-items:center;gap:1rem}
+
+/* H1 feedback: voltar ao topo */
+.to-top{
+  position:fixed;right:20px;bottom:20px;z-index:40;width:42px;height:42px;border-radius:50%;
+  background:var(--primary);color:#141319;border:none;cursor:pointer;font-size:1.1rem;
+  display:none;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.3);
+  transition:transform .2s,opacity .3s;opacity:0;
+}
+.to-top.show{display:flex;opacity:1}
+.to-top:hover{transform:translateY(-3px)}
+[data-theme="atelie"] .to-top{color:#fffdf9}
+
+/* H4 consistência: vídeo do case ganha rótulo */
+.video-legenda{font-family:var(--mono);font-size:.72rem;color:var(--texto-2);margin:-.6rem 0 1.2rem}
+
+/* H8 estética: respiro extra em telas grandes já vem do wrap; refino foco visível global */
+a:focus-visible,button:focus-visible{outline:2px solid var(--primary);outline-offset:3px;border-radius:4px}
+
+/* H6 reconhecimento: cartões clicáveis mostram affordance de link */
+.case-card,.porta{cursor:pointer}
+
+/* mobile: seletor de idioma continua visível mesmo com nav-links oculto */
+@media (max-width:880px){
+  .lang-switch a span.lbl{display:none}
+  .nav-right{gap:.6rem}
+}
+
+</style>
+
+</head>
+<body>
+<div class="grao" aria-hidden="true"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="flor-margarida">
+      <path d="M50 8 C58 20 58 32 50 42 C42 32 42 20 50 8 Z"/>
+      <path d="M50 92 C58 80 58 68 50 58 C42 68 42 80 50 92 Z"/>
+      <path d="M8 50 C20 42 32 42 42 50 C32 58 20 58 8 50 Z"/>
+      <path d="M92 50 C80 42 68 42 58 50 C68 58 80 58 92 50 Z"/>
+      <path d="M20 20 C34 24 42 32 46 46 C32 42 24 34 20 20 Z"/>
+      <path d="M80 20 C66 24 58 32 54 46 C68 42 76 34 80 20 Z"/>
+      <path d="M20 80 C34 76 42 68 46 54 C32 58 24 66 20 80 Z"/>
+      <path d="M80 80 C66 76 58 68 54 54 C68 58 76 66 80 80 Z"/>
+      <circle cx="50" cy="50" r="11"/>
+    </g>
+  </defs>
+</svg>
+
+
+<a class="skip-link" href="#main">Pular para o conteúdo</a>
+<nav>
+  <div class="wrap nav-in">
+    <a class="marca" href="index.html">ligia ribeiro<svg class="margarida" viewBox="0 0 100 100" aria-hidden="true"><use href="#flor-margarida"/></svg></a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="produto.html" aria-current="page">Produto &amp; UX</a></li>
+        <li><a href="dev.html">Dev &amp; Automação</a></li>
+        <li><a href="index.html#sobre">Sobre</a></li>
+      </ul>
+      <div class="lang-switch">
+        <svg class="globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>
+        <a href="en/index.html" title="Switch to English" aria-label="Switch to English"><span class="flag">🇬🇧</span><span class="lbl">EN</span></a>
+      </div>
+      <a class="nav-cta" href="mailto:ligiaribeiro.job@gmail.com">contato →</a>
+    </div>
+  </div>
+</nav>
+
+
+<main id="main"><header class="wrap pagina-hero">
+  <p class="eyebrow">produto &amp; ux</p>
+  <h1 class="disp">Design system, pesquisa e prototipação que viram <em>produto de verdade</em>.</h1>
+  <p class="hero-sub">6 anos em produtos digitais de alta complexidade, sobre 15 anos de ofício em design: design systems adotados por múltiplas squads, pesquisa qualitativa que embasa decisão e handoff que reduz ciclos entre design e engenharia.</p>
+</header>
+
+<!-- ============================================================
+     CASES · duplique um <a class="case-card"> por case.
+     A imagem entra em assets/img/; enquanto não houver,
+     mantenha o <div class="case-img case-img--vazia">.
+     Cada case pode apontar para uma página própria no futuro.
+     ============================================================ -->
+<section class="wrap cases">
+
+  <a class="case-card" href="#">
+    <div class="case-img case-img--vazia">✿ imagem do case<br>(capa do design system)</div>
+    <div class="case-info">
+      <span class="contexto">COMPSIS · 2022–2025 · design system</span>
+      <h2 class="disp">Unificando 8 produtos com um design system</h2>
+      <p>Ownership de ponta a ponta: auditoria de 8 produtos, fundamentos e tokens, biblioteca com mais de 50 componentes no Figma, guidelines e implementação junto às squads.</p>
+      <span class="case-resultado"><b>Resultado:</b> 8 produtos integrados, 100% de adoção pelas squads e redução de 70% no tempo de criação de novas interfaces.</span>
+    </div>
+  </a>
+
+  <a class="case-card" href="case-sicat-pay.html">
+    <div class="case-img case-img--vazia">✿ imagem do case<br>(telas do SICAT Pay)</div>
+    <div class="case-info">
+      <span class="contexto">COMPSIS · ux/ui · pagamentos</span>
+      <h2 class="disp">Cortando 30% do tempo de operação no SICAT Pay</h2>
+      <p>Reformulação do app de pagamentos do Free Flow: pesquisa com 15 usuários, fluxo reduzido de 8 para 4 etapas e validação em 3 rodadas de testes de usabilidade.</p>
+      <span class="case-resultado"><b>Resultado:</b> −30% no tempo de operação, taxa de sucesso de 65% para 95% e avaliação na App Store de 3.2 para 4.6.</span>
+    </div>
+  </a>
+
+  <a class="case-card" href="#">
+    <div class="case-img case-img--vazia">✿ imagem do case<br>(telas do ATM)</div>
+    <div class="case-info">
+      <span class="contexto">COMPSIS · ux/ui · autoatendimento</span>
+      <h2 class="disp">Autoatendimento acessível, 40% mais rápido</h2>
+      <p>Interface para terminais de autoatendimento com foco em fluidez e acessibilidade: pesquisa contextual, alto contraste, botões generosos e testes com diferentes perfis de usuário, incluindo pessoas idosas.</p>
+      <span class="case-resultado"><b>Resultado:</b> −40% no tempo médio de operação, conformidade WCAG 2.1 AA e 96% de satisfação em pesquisas de usabilidade.</span>
+    </div>
+  </a>
+
+  <a class="case-card" href="#">
+    <div class="case-img case-img--vazia">✿ imagem do case<br>(peças Ensino Einstein)</div>
+    <div class="case-info">
+      <span class="contexto">CREATIVOSBR · 2025–atual · direção de arte para o Ensino Einstein</span>
+      <h2 class="disp">Sistema de comunicação multicanal</h2>
+      <p>Direção de arte de campanhas educacionais em escala: e-mail marketing, redes sociais, banners e materiais institucionais operando como um sistema, com fluxos de produção reestruturados e automação de e-mail reduzindo etapas manuais. <!-- ATENÇÃO: imagens de peças só após aprovação da agência/cliente --></p>
+      <span class="case-resultado"><b>Resultado:</b> mais consistência entre canais e menos etapas manuais na produção. <!-- SUBSTITUA por métrica se houver: nº de peças/mês, canais, tempo economizado --></span>
+    </div>
+  </a>
+
+</section>
+
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <h4 class="disp">Vamos trabalhar <em>juntas(os)</em>?</h4>
+      <ul class="foot-links">
+        <li><a href="mailto:ligiaribeiro.job@gmail.com">e-mail</a></li>
+        <li><a href="https://www.linkedin.com/in/liribeiro" target="_blank" rel="noopener noreferrer">linkedin</a></li>
+        <li><a href="https://www.behance.net/Liribeiro" target="_blank" rel="noopener noreferrer">behance</a></li>
+        <li><a href="https://github.com/ligribeiro" target="_blank" rel="noopener noreferrer">github</a></li>
+      </ul>
+    </div>
+    <p class="assina">desenhado e programado por <b>Ligia Ribeiro</b> · aberta a propostas como product designer e dev</p>
+  </div>
+</footer>
+
+<button class="to-top" aria-label="Voltar ao topo" title="Voltar ao topo">↑</button>
+<script>
+/* Botão "voltar ao topo": aparece após rolar, feedback de estado (Nielsen H1). */
+(function(){
+  var btn=document.querySelector('.to-top');
+  if(!btn) return;
+  window.addEventListener('scroll',function(){
+    if(window.scrollY>600){btn.classList.add('show')}else{btn.classList.remove('show')}
+  },{passive:true});
+  btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+})();
+
+</script>
+</body>
+</html>

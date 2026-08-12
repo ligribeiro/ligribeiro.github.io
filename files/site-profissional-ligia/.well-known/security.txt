@@ -1,4 +1,0 @@
-Contact: mailto:ligiaribeiro.job@gmail.com
-Expires: 2027-08-12T00:00:00.000Z
-Preferred-Languages: pt-BR, en
-Canonical: https://liribeiro.com.br/.well-known/security.txt

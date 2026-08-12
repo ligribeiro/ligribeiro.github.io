@@ -1,16 +1,11 @@
 <!DOCTYPE html>
-<html lang="pt-BR" data-theme="estudio">
+<html lang="pt-BR" data-theme="estudio" data-primary="violeta">
 <head>
+<title>Dev & Automação — Ligia Ribeiro</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Dashboards, automações em Python e projetos de desenvolvimento com resultado.">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<title>Ligia Ribeiro · Product Designer &amp; Dev</title>
-<meta name="description" content="Product designer que programa: design systems adotados por múltiplas squads, UX research e automações. 15 anos em design, 6 em produto digital.">
-<link rel="canonical" href="https://liribeiro.com.br/">
-<meta property="og:title" content="Ligia Ribeiro · Product Designer & Dev">
-<meta property="og:description" content="Desenho o produto e escrevo o código. Design systems, UX e automação.">
-<meta property="og:url" content="https://liribeiro.com.br/">
-<meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,100..900,0..100,0..1;1,9..144,100..900,0..100,0..1&family=Hanken+Grotesk:ital,wght@0,300..800;1,300..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -473,9 +468,9 @@ footer{border-top:1px solid var(--linha);padding:3rem 0 2.3rem;transition:border
 .lang-switch{display:flex;align-items:center;gap:.5rem}
 .lang-switch .globe{width:15px;height:15px;opacity:.7}
 .lang-switch a{
-  font-family:var(--mono);font-size:.78rem;font-weight:500;color:var(--texto-2);text-decoration:none;
-  display:flex;align-items:center;gap:.35rem;padding:.32rem .55rem;border-radius:8px;
-  border:1px solid var(--linha);transition:border-color .2s,color .2s;
+  font-family:var(--mono);font-size:.78rem;color:var(--texto-2);text-decoration:none;
+  display:flex;align-items:center;gap:.3rem;padding:.3rem .5rem;border-radius:8px;
+  border:1px solid transparent;transition:border-color .2s,color .2s;
 }
 .lang-switch a:hover,.lang-switch a:focus-visible{color:var(--texto);border-color:var(--linha)}
 .lang-switch .flag{font-size:.95rem;line-height:1}
@@ -504,6 +499,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--primary);outline-of
 
 /* mobile: seletor de idioma continua visível mesmo com nav-links oculto */
 @media (max-width:880px){
+  .lang-switch a span.lbl{display:none}
   .nav-right{gap:.6rem}
 }
 
@@ -512,7 +508,6 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--primary);outline-of
 </head>
 <body>
 <div class="grao" aria-hidden="true"></div>
-
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <g id="flor-margarida">
@@ -529,6 +524,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--primary);outline-of
   </defs>
 </svg>
 
+
 <a class="skip-link" href="#main">Pular para o conteúdo</a>
 <nav>
   <div class="wrap nav-in">
@@ -536,110 +532,80 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--primary);outline-of
     <div class="nav-right">
       <ul class="nav-links">
         <li><a href="produto.html">Produto &amp; UX</a></li>
-        <li><a href="dev.html">Dev &amp; Automação</a></li>
+        <li><a href="dev.html" aria-current="page">Dev &amp; Automação</a></li>
         <li><a href="index.html#sobre">Sobre</a></li>
       </ul>
       <div class="lang-switch">
         <svg class="globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>
-        <a href="en/index.html" title="Switch to English" aria-label="Switch to English" lang="en"><span class="lbl">EN</span></a>
+        <a href="en/index.html" title="Switch to English" aria-label="Switch to English"><span class="flag">🇬🇧</span><span class="lbl">EN</span></a>
       </div>
       <a class="nav-cta" href="mailto:ligiaribeiro.job@gmail.com">contato →</a>
     </div>
   </div>
 </nav>
 
-<main id="main"><header class="wrap">
-  <p class="eyebrow">product designer · dev</p>
-  <h1 class="disp">Desenho o produto e escrevo o <em>código</em>.</h1>
-  <p class="hero-sub">Sou a Ligia. Há 15 anos trabalho com design, e nos últimos 6 desenho produtos digitais: design systems adotados por múltiplas squads e automações que devolvem horas ao time. Um perfil só, dos tokens ao deploy.</p>
-  <div class="hero-meta">
-    <span><b>15</b> anos em design</span>
-    <span><b>6</b> anos em produto</span>
-    <span>São José dos Campos · SP</span>
-  </div>
-  <div style="margin-top:1.7rem;display:flex;gap:.7rem;flex-wrap:wrap">
-    <a class="nav-cta" data-cv-download href="assets/cv/Ligia_Ribeiro_CV_PT.pdf" role="button" aria-haspopup="menu" aria-expanded="false">baixar CV ↓</a>
-    <a class="nav-cta" href="en/">English version →</a>
-  </div>
+
+<main id="main"><header class="wrap pagina-hero">
+  <p class="eyebrow">dev &amp; automação</p>
+  <h1 class="disp">Código que devolve tempo: dashboards, robôs e <em>automação</em>.</h1>
+  <p class="hero-sub">Formação em Desenvolvimento de Software Multiplataforma (FATEC) somada a anos dentro de operações criativas: eu vejo o trabalho manual repetitivo e escrevo o código que o elimina.</p>
 </header>
 
-<section class="wrap portas" aria-label="Escolha por onde começar">
+<section class="wrap cases">
 
-  <a class="porta" href="produto.html" data-tema="estudio">
-    <span class="porta-tag">para times de produto</span>
-    <h2 class="disp">Produto &amp; UX</h2>
-    <p>Design system com adoção transversal, pesquisa com usuários e prototipação de alta fidelidade em ciclos ágeis.</p>
-    <span class="porta-prova"><b>Design System Compsis:</b> componentização e documentação adotadas por múltiplos produtos.</span>
-    <span class="porta-cta">ver cases</span>
+  <a class="case-card" href="#">
+    <div class="case-img case-img--vazia">✿ imagem do case<br>(print da dashboard)</div>
+    <div class="case-info">
+      <span class="contexto">CREATIVOSBR · google apps script · dados</span>
+      <h2 class="disp">Dando visibilidade em tempo real à operação</h2>
+      <p>Painel que centraliza os dados de produção da agência e gera relatórios automáticos para as lideranças, substituindo consolidação manual de planilhas. Código proprietário; o case apresenta problema, abordagem e resultados.</p>
+      <span class="case-resultado"><b>Resultado:</b> visibilidade da operação em tempo real e relatórios sem trabalho manual. <!-- SUBSTITUA por métrica: horas/semana e nº de usuários --></span>
+    </div>
   </a>
 
-  <a class="porta" href="dev.html" data-tema="dev" style="--primary:#b07ef5;--primary-bg:rgba(142,45,226,.18)">
-    <span class="porta-tag">para times de engenharia</span>
-    <h2 class="disp">Dev &amp; Automação</h2>
-    <p>Dashboards, robôs em Python e integrações que eliminam trabalho manual e geram relatórios sozinhos.</p>
-    <span class="porta-prova"><b>Automação CreativosBR:</b> cards criados automaticamente, dados da operação em um painel só.</span>
-    <span class="porta-cta">ver projetos</span>
+  <a class="case-card" href="#">
+    <div class="case-img case-img--vazia">✿ imagem do case<br>(diagrama do fluxo do robô)</div>
+    <div class="case-info">
+      <span class="contexto">CREATIVOSBR · python · integração</span>
+      <h2 class="disp">Eliminando etapas manuais com um robô em Python</h2>
+      <p>Automação em Python que cria cards automaticamente e sincroniza os sistemas do fluxo de trabalho da agência, eliminando etapas manuais do dia a dia. Código proprietário; o case apresenta problema, abordagem e resultados.</p>
+      <span class="case-resultado"><b>Resultado:</b> economia de tempo e dinheiro na operação. <!-- SUBSTITUA por métrica levantada --></span>
+    </div>
   </a>
 
+  <a class="case-card" href="https://youtu.be/kWUGdcpEC64" target="_blank" rel="noopener noreferrer">
+    <div class="case-img case-img--vazia">✿ imagem do case<br>(app + hardware Azimuth)</div>
+    <div class="case-info">
+      <span class="contexto">FATEC · iot · mobile · 🏆 prêmio · ▶ apresentação em vídeo</span>
+      <h2 class="disp">Azimuth</h2>
+      <p>Vencedor do Prêmio Fatec de Melhor Projeto de Tecnologia do Ano: app mobile e IoT com Arduino para monitoramento de derivadores oceanográficos. Atuei da arquitetura ao front-end, banco de dados e IoT.</p>
+      <span class="case-resultado"><b>Resultado:</b> melhor projeto de tecnologia do ano da Fatec.</span>
+    </div>
+  </a>
+
+  <a class="case-card" href="https://youtu.be/d7jc49lAvUY" target="_blank" rel="noopener noreferrer">
+    <div class="case-img case-img--vazia">✿ imagem do case<br>(telas do Receita.AI)</div>
+    <div class="case-info">
+      <span class="contexto">FATEC · ia · front-end · design system · ▶ apresentação em vídeo</span>
+      <h2 class="disp">Receita.AI</h2>
+      <p>Aplicação com inteligência artificial para identificar alimentos e gerar receitas. Identidade visual, design system do projeto e desenvolvimento front-end.</p>
+      <span class="case-resultado"><b>Resultado:</b> do conceito à aplicação funcional, unindo design e código.</span>
+    </div>
+  </a>
 
 </section>
 
-<section class="provas">
-  <div class="wrap provas-grid">
-    <div class="prova"><div class="n disp">3</div><div class="l">design systems criados, incluindo um adotado por múltiplas squads</div></div>
-    <div class="prova"><div class="n disp">horas/semana</div><div class="l">devolvidas ao time com automação (métrica em levantamento)</div></div>
-    <div class="prova"><div class="n disp">🏆 Fatec</div><div class="l">melhor projeto de tecnologia do ano (Azimuth)</div></div>
-    <div class="prova"><div class="n disp">15+</div><div class="l">projetos concluídos entre produto, design e código</div></div>
-  </div>
-</section>
-
-
-<section class="wrap sobre" id="sobre">
-  <div class="sobre-grid">
-    <div class="sobre-foto sobre-foto--vazia">✿ sua foto aqui<br>(assets/img/ligia.jpg)</div>
+<div class="wrap">
+  <section class="bloco-ad">
     <div>
-      <h2 class="disp">Sobre <em>mim</em></h2>
-      <p>Sou a Ligia Ribeiro. Há 15 anos trabalho com design, com o ofício gráfico já consolidado, e nos últimos 6 anos venho direcionando essa base para produto digital, usabilidade e desenvolvimento. Fiz o caminho da comunicação (Publicidade na PUC-SP) ao desenvolvimento de software (FATEC), e é nesse encontro que me sinto em casa: entender pessoas, desenhar a solução e escrever o código que a coloca de pé.</p>
-      <p>Gosto de trabalhar lado a lado com product managers, pesquisa e engenharia, dos tokens de um design system ao deploy de uma automação. Acredito em produto que resolve problema real, com método e sem perder a mão do ofício.</p>
-      <p>Nas horas em que fecho o editor de código, ilustro em aquarela e meios digitais sob a marca <b>Margarida Negra</b>, com afeto especial por projetos que aproximam ciência e pessoas.</p>
+      <h2 class="disp">Código aberto onde é possível</h2>
+      <p>Este site e os projetos acadêmicos estão públicos no meu GitHub, com código limpo e documentado. As automações desenvolvidas para clientes e empregadores são propriedade intelectual protegida: apresento o problema, a abordagem e os resultados, e o código permanece confidencial.</p>
     </div>
-  </div>
-</section>
-
-<section class="wrap meta-case" id="sistema">
-  <div class="meta-z">
-
-    <div class="meta-z-a">
-      <p class="eyebrow">o site como case</p>
-      <h3 class="disp">Este site é um design system com duas peles. <em>Alterne e veja.</em></h3>
+    <div class="bloco-ad-acoes">
+      <a class="botao botao--cheio" href="https://github.com/ligribeiro" target="_blank" rel="noopener noreferrer">ver projetos abertos no github</a>
     </div>
-
-    <div class="meta-z-b">
-      <span class="lbl">alternar pele</span>
-      <div class="botoes-tema" role="group" aria-label="Alternar pele do design system">
-        <button class="botao-tema" data-set="estudio" aria-pressed="true">produto &amp; ux · primary laranja</button>
-        <button class="botao-tema" data-set="dev" aria-pressed="false">dev &amp; automação · primary violeta</button>
-      </div>
-    </div>
-
-    <div class="meta-z-c">
-      <p>Um único conjunto de componentes, duas peles sobre a mesma tinta escura: primary <b>laranja</b> para o trabalho de produto e design, primary <b>violeta</b> para desenvolvimento e automação. Os tokens ao lado são lidos ao vivo do CSS computado: alterne a pele e veja os valores mudarem. É a disciplina que apliquei no design system da Compsis, agora aplicada a mim.</p>
-    </div>
-
-    <div class="meta-z-d">
-      <div class="tokens-painel">
-        <span class="lbl">tokens ativos</span>
-        <ul class="tokens-spec" aria-live="polite">
-          <li class="token-linha"><i class="sw" style="background:var(--fundo)"></i><b>--fundo</b><span class="val" data-token="fundo"></span></li>
-          <li class="token-linha"><i class="sw" style="background:var(--superficie)"></i><b>--superficie</b><span class="val" data-token="superficie"></span></li>
-          <li class="token-linha"><i class="sw" style="background:var(--texto)"></i><b>--texto</b><span class="val" data-token="texto"></span></li>
-          <li class="token-linha"><i class="sw" style="background:var(--primary)"></i><b>--primary</b><span class="val" data-token="primary"></span></li>
-        </ul>
-      </div>
-    </div>
-
-  </div>
-</section>
+  </section>
+</div>
 
 </main>
 <footer>
@@ -657,87 +623,6 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--primary);outline-of
   </div>
 </footer>
 
-<script>
-/* Peles do design system: estúdio (produto, primary laranja) e estúdio+violeta (dev).
-   Troca via hover/foco nas portas e via botões da seção do design system.
-   A leitura de tokens exibe o valor computado de cada custom property. */
-(function(){
-  const raiz=document.documentElement;
-  const MODOS={
-    estudio:{theme:'estudio',primary:null},
-    dev:{theme:'estudio',primary:'violeta'}
-  };
-  const portas=document.querySelectorAll('.porta[data-tema]');
-  const botoes=document.querySelectorAll('.botao-tema');
-  const tokens=document.querySelectorAll('[data-token]');
-  const mq=window.matchMedia('(hover:hover)');
-  let modoFixo='estudio';
-
-  function lerTokens(){
-    const cs=getComputedStyle(raiz);
-    tokens.forEach(el=>{
-      el.textContent=cs.getPropertyValue('--'+el.dataset.token).trim();
-    });
-  }
-
-  function aplicar(m){
-    const cfg=MODOS[m]||MODOS.estudio;
-    raiz.setAttribute('data-theme',cfg.theme);
-    if(cfg.primary){raiz.setAttribute('data-primary',cfg.primary)}
-    else{raiz.removeAttribute('data-primary')}
-    botoes.forEach(b=>b.setAttribute('aria-pressed', b.dataset.set===m ? 'true':'false'));
-    lerTokens();
-  }
-
-  portas.forEach(p=>{
-    if(mq.matches){
-      p.addEventListener('mouseenter',()=>aplicar(p.dataset.tema));
-      p.addEventListener('mouseleave',()=>aplicar(modoFixo));
-    }
-    p.addEventListener('focus',()=>aplicar(p.dataset.tema));
-    p.addEventListener('blur',()=>aplicar(modoFixo));
-  });
-
-  botoes.forEach(b=>b.addEventListener('click',()=>{
-    modoFixo=b.dataset.set;
-    aplicar(modoFixo);
-  }));
-
-  lerTokens();
-})();
-
-</script>
-<script>
-/* Seletor de download do CV: idioma (PT/EN) x versão (ATS/bonito). */
-(function(){
-  document.querySelectorAll('[data-cv-download]').forEach(function(btn){
-    btn.addEventListener('click', function(e){
-      e.preventDefault();
-      var open = btn.parentNode.querySelector('.cv-pop');
-      if(open){ open.remove(); btn.setAttribute('aria-expanded','false'); return; }
-      var base = btn.getAttribute('href').replace(/assets\/cv\/.*$/, 'assets/cv/');
-      var pop = document.createElement('div');
-      pop.className='cv-pop'; pop.setAttribute('role','menu');
-      pop.innerHTML =
-        '<span class="cv-pop-lbl">para envio a pessoas</span>'+
-        '<a role="menuitem" href="'+base+'Ligia_Ribeiro_CV_PT_bonito.pdf" download>Português — versão visual</a>'+
-        '<a role="menuitem" href="'+base+'Ligia_Ribeiro_CV_EN_bonito.pdf" download>English — visual version</a>'+
-        '<span class="cv-pop-lbl">para candidaturas online (ATS)</span>'+
-        '<a role="menuitem" href="'+base+'Ligia_Ribeiro_CV_PT.pdf" download>Português — versão simples</a>'+
-        '<a role="menuitem" href="'+base+'Ligia_Ribeiro_CV_EN.pdf" download>English — simple version</a>';
-      btn.parentNode.style.position='relative';
-      btn.parentNode.appendChild(pop);
-      btn.setAttribute('aria-expanded','true');
-      setTimeout(function(){
-        document.addEventListener('click', function fecha(ev){
-          if(!pop.contains(ev.target)&&ev.target!==btn){pop.remove();btn.setAttribute('aria-expanded','false');document.removeEventListener('click',fecha);}
-        });
-      },0);
-    });
-  });
-})();
-
-</script>
 <button class="to-top" aria-label="Voltar ao topo" title="Voltar ao topo">↑</button>
 <script>
 /* Botão "voltar ao topo": aparece após rolar, feedback de estado (Nielsen H1). */
